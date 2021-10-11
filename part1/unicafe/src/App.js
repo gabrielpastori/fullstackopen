@@ -27,6 +27,12 @@ const Statistics = ({good,neutral,bad}) => {
   const total = good+neutral+bad
   const average = (good-bad)/total
   const positive = (good/total*100)
+
+  if(total==0){
+    return (
+      <p>No feedback given</p>
+    )
+  }
   return (
     <div>
       <ResultLine text="good" value={good}/>
@@ -38,6 +44,7 @@ const Statistics = ({good,neutral,bad}) => {
     </div>
   )
 }
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
