@@ -1,8 +1,23 @@
 import React, { useState } from 'react'
 
+const Header = ({text}) => {
+  return (
+    <h1>{text}</h1>
+  )
+}
+
 const Button = ({text,onClick}) => {
   return (
     <button onClick={onClick}>{text}</button>
+  )
+}
+
+const Anecdote = ({text,votes}) => {
+  return (
+    <div>
+      <p>{text}</p>
+      <div>has {votes} votes</div>
+    </div>
   )
 }
 
@@ -30,12 +45,29 @@ const App = () => {
       setPoints(copy)
     )
   }
+  const getMostVoted = () => {
+    let max = 0
+    let maxIdx = 0
+    for(let i=0; i<numberPhrases; i++){
+      if(points[i]>max){
+        max=points[i]
+        maxIdx=i
+      }
+    }
+    return maxIdx
+  } 
+
+  const mostVoted = getMostVoted()
+
   return (
     <div>
-      {anecdotes[selected]}
-      <div>has {points[selected]} points</div>
+      <Header text="Anecdote of the day"/>
+      <Anecdote text={anecdotes[selected]} votes = {points[selected]}/>
       <Button onClick={handleVote} text="vote"/>
       <Button onClick={handleNext} text="next anecdote"/>
+
+      <Header text="Anecdote with the most votes"/>
+      <Anecdote text={anecdotes[mostVoted]} votes = {points[mostVoted]}/>
     </div>
   )
 }
