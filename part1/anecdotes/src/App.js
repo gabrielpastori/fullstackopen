@@ -36,7 +36,17 @@ const App = () => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState(new Array(numberPhrases).fill(0))
 
-  const getRandom = (min,max) => Math.floor(Math.random() * (max-min) + min)
+  const getRandom = (min,max) => {
+    const newRandom = Math.floor(Math.random() * (max-min) + min)
+    if(newRandom===selected){
+      return (
+        getRandom(min,max)
+      )
+    }
+    return(
+      newRandom
+    )
+  }
   const handleNext = () => setSelected(getRandom(0,numberPhrases))
   const handleVote = () => {
     const copy = [...points]
