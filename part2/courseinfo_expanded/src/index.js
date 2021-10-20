@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Header = ({ course }) => {
+const Header = ({course}) => {
   return (
     <h1>{course.name}</h1>
   )
+}
+
+const Total = ({parts}) => {
+  const sum = parts.reduce((psum, part) => psum+part.exercises,0)
+  return(
+    <p>Number of exercises {sum}</p>
+  ) 
 }
 
 const Part = (props) => {
@@ -28,6 +35,7 @@ const Course = ({course}) => {
     <div>
       <Header course={course} />
       <Content parts={course.parts} />
+      <Total parts={course.parts}/>
     </div>
   )
 }
