@@ -3,7 +3,7 @@ import Country from './Country';
 import Languages from './Languages';
 import Flag from './Flag';
 
-const View = ({ country }) => {
+const About = ({ country }) => {
     return (
         <div>
             <Country country={country} />
@@ -13,4 +13,4 @@ const View = ({ country }) => {
     );
 }
 
-export default View;
+export default About;

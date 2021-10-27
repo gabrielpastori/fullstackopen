@@ -7,7 +7,7 @@ const App = () => {
   const [term, setTerm] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [countries, setCountries] = useState([]);
-
+  console.log(term)
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -28,7 +28,7 @@ const App = () => {
     <div>
       <Filter term={term} onChange={handleFilterInput} />
 
-      <Countries filteredCountries={filteredCountries} />
+      <Countries filteredCountries={filteredCountries} setTerm={setTerm} setFilteredCountries={setFilteredCountries}/>
 
     </div>
   );
