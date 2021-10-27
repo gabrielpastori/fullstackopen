@@ -1,7 +1,5 @@
 import React from 'react';
-import Country from './Country';
-import Flag from './Flag';
-import Languages from './Languages';
+import View from './View';
 
 const Countries = ({ filteredCountries }) => {
     const numberOfCountries = filteredCountries.length;
@@ -16,11 +14,7 @@ const Countries = ({ filteredCountries }) => {
     if (numberOfCountries === 1) {
         const country = filteredCountries[0];
         return (
-            <div>
-                <Country country={country} />
-                <Languages country={country} />
-                <Flag country={country} />
-            </div>
+            <View country={country}/>
         );
     }
     return (
