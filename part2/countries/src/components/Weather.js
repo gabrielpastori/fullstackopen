@@ -10,7 +10,7 @@ const Weather = ({ country }) => {
             .then((response) => {
                 setWeather(response.data.current);
             })
-    }, []);
+    }, [country.capital]);
 
     return (
         <div>
