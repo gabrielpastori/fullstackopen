@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 
 const Weather = ({ country }) => {
     const [weather, setWeather] = useState({});
-    const countryCapital = country.capital;
-    const api_key = process.env.REACT_APP_API_KEY;
-
     useEffect(() => {
+        const api_key = process.env.REACT_APP_API_KEY;
         axios
-            .get(`http://api.weatherstack.com/forecast?access_key=${api_key}&query=${countryCapital}&units=m`)
+            .get(`http://api.weatherstack.com/forecast?access_key=${api_key}&query=${country.capital}&units=m`)
             .then((response) => {
                 setWeather(response.data.current);
             })
@@ -16,9 +14,9 @@ const Weather = ({ country }) => {
 
     return (
         <div>
-            <h2>Weather in {countryCapital}</h2>
+            <h2>Weather in {country.capital}</h2>
             <p><b>temperature:</b> {weather.temperature} Celsius</p>
-            <img src={weather.weather_icons} alt={`current weather in ${countryCapital}`}/>
+            <img src={weather.weather_icons} alt={`current weather in ${country.capital}`}/>
             <p><b>Wind:</b> {weather.wind_speed} kmh direction {weather.wind_dir}</p>
         </div>
     );
