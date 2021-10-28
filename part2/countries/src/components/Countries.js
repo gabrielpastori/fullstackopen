@@ -1,6 +1,8 @@
 import React from 'react';
-import About from './About';
 import Weather from './Weather';
+import Country from './Country';
+import Languages from './Languages';
+import Flag from './Flag';
 
 const Countries = ({ filteredCountries, setTerm, setFilteredCountries }) => {
     const numberOfCountries = filteredCountries.length;
@@ -16,7 +18,9 @@ const Countries = ({ filteredCountries, setTerm, setFilteredCountries }) => {
         const country = filteredCountries[0];
         return (
             <div>
-                <About country={country}/>
+                <Country country={country} />
+                <Languages country={country} />
+                <Flag country={country} />
                 <Weather country={country}/>
             </div>
         );
