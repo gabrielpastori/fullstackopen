@@ -69,7 +69,7 @@ const App = () => {
 
   const handleDelete = (event) => {
     const deletePerson = event.currentTarget
-    if (!window.confirm(`Delete ${deletePerson.name} ?`)) {
+    if (!window.confirm(`Delete ${deletePerson.name} ${deletePerson.id}?`)) {
       return
     }
     personService

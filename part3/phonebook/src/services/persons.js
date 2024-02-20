@@ -20,7 +20,7 @@ const update = (id, newObject) => {
 
 const deletePerson = id => {
     const request = axios.delete(`${baseUrl}/${id}`)
-    return request.then(() => parseInt(id))
+    return request.then(() => id)
 }
 
 export default {
