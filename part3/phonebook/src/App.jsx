@@ -51,6 +51,13 @@ const App = () => {
             setMessage(null)
           }, 5000)
         })
+        .catch(error => {
+          setMessage(error.response.data.error)
+          setAlertColor('red')
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
+        })
       return
     }
     personService
@@ -64,12 +71,21 @@ const App = () => {
         }, 5000)
 
       })
+      .catch(error => {
+        setMessage(error.response.data.error)
+        setAlertColor('red')
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
+
+      })
+
 
   }
 
   const handleDelete = (event) => {
     const deletePerson = event.currentTarget
-    if (!window.confirm(`Delete ${deletePerson.name} ${deletePerson.id}?`)) {
+    if (!window.confirm(`Delete ${deletePerson.name}?`)) {
       return
     }
     personService
@@ -80,8 +96,6 @@ const App = () => {
       .catch( () => {
         setMessage(`Information of ${deletePerson.name} has already been removed from server`)
         setAlertColor('red')
-        console.log(deletePerson.id)
-        console.log(persons.filter((person) => person.id != deletePerson.id))
         setPersons(persons.filter((person) => person.id != deletePerson.id))
         setTimeout(() => {
           setMessage(null)
