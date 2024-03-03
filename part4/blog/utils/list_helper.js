@@ -25,7 +25,6 @@ const mostBlogs = (blogs) => {
         author: key,
         blogs: value.length
     }))
-    console.log(authorBlogCounts)
     const authorWithMostBlogs = _.maxBy(authorBlogCounts, 'blogs')
     return authorWithMostBlogs
 }
