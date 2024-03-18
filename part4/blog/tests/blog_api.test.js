@@ -76,7 +76,7 @@ describe.only('when there is initially some blogs saved', () => {
             assert.strictEqual(addedBlog.author, newBlog.author)
             assert.strictEqual(addedBlog.url, newBlog.url)
             assert.strictEqual(addedBlog.likes, newBlog.likes)
-    
+
         })
     
         test('Check like property defaults to 0', async () => {
@@ -136,8 +136,10 @@ describe.only('when there is initially some blogs saved', () => {
             const blogsAtStart = await helper.blogsInDb()
             const blogToUpdate = blogsAtStart[0]
 
+            const token = await getUserToken(helper.user1)
             await api
                 .patch(`/api/blogs/${blogToUpdate.id}`)
+                .set('Authorization', `Bearer ${token}`)
                 .send({ 'likes': 25 })
                 .expect(200)
 
